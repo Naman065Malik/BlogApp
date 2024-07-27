@@ -19,6 +19,9 @@ import lombok.ToString;
 @ToString
 public class UserDto {
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private long id;
+
     @NotBlank(message = "Fullname is required")
     @Size(min = 5, max = 20, message = "Fullname must be between 5 and 20 characters")
     private String fullname;

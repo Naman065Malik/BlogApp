@@ -2,6 +2,7 @@ package NM.SpringBoot.BlogApp.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +34,12 @@ public class BlogServiceImpl implements BlogService{
 
     @Override
     public List<BlogDoa> getAllBlogsbyUserId(long user_id) {
-        return blogRepo.findByHostId(user_id);
+        UserDao user = userRepo.findById(user_id).orElseThrow(() -> new ResourceNotFound("User Not found with id " + user_id));
+        return user.getBlogs();
     }
 
     @Override
-    public BlogDoa getBlogById(long id) {
+    public BlogDoa getBlogById(UUID id) {
         return blogRepo.findById(id).orElseThrow(() -> new ResourceNotFound("Blog Not Found with id " + id));
     }
 
@@ -54,7 +56,7 @@ public class BlogServiceImpl implements BlogService{
     }
 
     @Override
-    public BlogDoa updateBlog(long id, BlogDto blog) {
+    public BlogDoa updateBlog(UUID id, BlogDto blog) {
         BlogDoa blogDoa = blogRepo.findById(id).orElseThrow(() -> new ResourceNotFound("Blog Not Found with id " + id));
         modelMapper.map(blog,blogDoa);
         blogDoa.setUpdatedAt(LocalDateTime.now());
@@ -63,7 +65,7 @@ public class BlogServiceImpl implements BlogService{
     }
 
     @Override
-    public boolean deleteUser(long id) {
+    public boolean deleteUser(UUID id) {
         BlogDoa blogDoa = blogRepo.findById(id).orElseThrow(() -> new ResourceNotFound("Blog Not Found with id " + id));
 
         blogRepo.delete(blogDoa);

@@ -1,6 +1,7 @@
 package NM.SpringBoot.BlogApp.DTO;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -19,7 +20,7 @@ import lombok.ToString;
 public class BlogDto {
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private long id;
+    private UUID id;
 
     @Size(min = 7, max = 15,message = "Title should be in between 7 to 15 Characters.")
     private String title;

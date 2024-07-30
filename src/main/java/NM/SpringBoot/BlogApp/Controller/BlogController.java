@@ -1,6 +1,7 @@
 package NM.SpringBoot.BlogApp.Controller;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -33,13 +34,13 @@ public class BlogController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BlogDto> getBlogById(@PathVariable("id") long id) {
+    public ResponseEntity<BlogDto> getBlogById(@PathVariable UUID id) {
         BlogDoa blog = blogService.getBlogById(id);
         return new ResponseEntity<>(modelMapper.map(blog, BlogDto.class), HttpStatus.OK);
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<BlogDto>> getAllBlogsByUserId(@PathVariable("userId") long userId) {
+    public ResponseEntity<List<BlogDto>> getAllBlogsByUserId(@PathVariable long userId) {
         List<BlogDto> blogs = blogService.getAllBlogsbyUserId(userId)
         .stream().map(blog -> modelMapper.map(blog, BlogDto.class))
         .collect(Collectors.toList());
@@ -53,14 +54,14 @@ public class BlogController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<BlogDto> updateBlog(@PathVariable long id, @RequestBody BlogDto blogDto) {
+    public ResponseEntity<BlogDto> updateBlog(@PathVariable UUID id, @RequestBody BlogDto blogDto) {
         System.out.println(blogDto.toString());
         BlogDoa Blog = blogService.updateBlog(id, blogDto);
         return new ResponseEntity<>(modelMapper.map(Blog, BlogDto.class), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteBlog(@PathVariable long id) {
+    public ResponseEntity<String> deleteBlog(@PathVariable UUID id) {
         blogService.deleteUser(id);
         return new ResponseEntity<>("Blog deleted successfully", HttpStatus.NO_CONTENT);
     }

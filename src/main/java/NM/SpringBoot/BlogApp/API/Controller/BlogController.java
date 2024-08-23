@@ -1,4 +1,4 @@
-package NM.SpringBoot.BlogApp.Controller;
+package NM.SpringBoot.BlogApp.API.Controller;
 
 import java.util.List;
 import java.util.UUID;
@@ -10,9 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import NM.SpringBoot.BlogApp.DAO.BlogDoa;
-import NM.SpringBoot.BlogApp.DTO.BlogDto;
-import NM.SpringBoot.BlogApp.Service.BlogService;
+import NM.SpringBoot.BlogApp.Domain.DTO.BlogDto;
+import NM.SpringBoot.BlogApp.Domain.DAO.BlogDoa;
+import NM.SpringBoot.BlogApp.Domain.Service.BlogService;
 
 @RestController
 @RequestMapping("/api/blogs")

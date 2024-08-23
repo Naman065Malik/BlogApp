@@ -1,4 +1,4 @@
-package NM.SpringBoot.BlogApp.DTO;
+package NM.SpringBoot.BlogApp.API.Request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,11 +11,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class AuthResponse {
+public class LoginRequest {
     
-    private String AccessToken;
-    private String RefreshToken;
     private String username;
-    private Boolean success;
-
+    private String password;
 }

@@ -1,4 +1,4 @@
-package NM.SpringBoot.BlogApp.DTO;
+package NM.SpringBoot.BlogApp.Domain.DTO;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

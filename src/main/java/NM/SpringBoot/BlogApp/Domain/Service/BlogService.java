@@ -1,10 +1,10 @@
-package NM.SpringBoot.BlogApp.Service;
+package NM.SpringBoot.BlogApp.Domain.Service;
 
 import java.util.List;
 import java.util.UUID;
 
-import NM.SpringBoot.BlogApp.DAO.BlogDoa;
-import NM.SpringBoot.BlogApp.DTO.BlogDto;
+import NM.SpringBoot.BlogApp.Domain.DTO.BlogDto;
+import NM.SpringBoot.BlogApp.Domain.DAO.BlogDoa;
 
 public interface BlogService {
     public List<BlogDoa> getAllBlogs();

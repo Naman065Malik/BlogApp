@@ -1,4 +1,4 @@
-package NM.SpringBoot.BlogApp.Service;
+package NM.SpringBoot.BlogApp.Domain.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -8,12 +8,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import NM.SpringBoot.BlogApp.DAO.BlogDoa;
-import NM.SpringBoot.BlogApp.DAO.UserDao;
-import NM.SpringBoot.BlogApp.DTO.BlogDto;
-import NM.SpringBoot.BlogApp.Exception.ResourceNotFound;
-import NM.SpringBoot.BlogApp.Repository.BlogRepo;
-import NM.SpringBoot.BlogApp.Repository.UserRepo;
+import NM.SpringBoot.BlogApp.Domain.DTO.BlogDto;
+import NM.SpringBoot.BlogApp.API.Exception.ResourceNotFound;
+import NM.SpringBoot.BlogApp.Domain.DAO.BlogDoa;
+import NM.SpringBoot.BlogApp.Domain.DAO.UserDao;
+import NM.SpringBoot.BlogApp.Domain.Repository.BlogRepo;
+import NM.SpringBoot.BlogApp.Domain.Repository.UserRepo;
 
 @Service
 public class BlogServiceImpl implements BlogService{

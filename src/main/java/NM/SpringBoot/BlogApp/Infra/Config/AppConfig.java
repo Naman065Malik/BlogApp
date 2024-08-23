@@ -1,4 +1,4 @@
-package NM.SpringBoot.BlogApp.Config;
+package NM.SpringBoot.BlogApp.Infra.Config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

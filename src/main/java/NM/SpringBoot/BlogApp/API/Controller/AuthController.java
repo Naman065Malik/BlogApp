@@ -1,4 +1,4 @@
-package NM.SpringBoot.BlogApp.Controller;
+package NM.SpringBoot.BlogApp.API.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import NM.SpringBoot.BlogApp.DAO.UserDao;
-import NM.SpringBoot.BlogApp.DTO.AuthResponse;
-import NM.SpringBoot.BlogApp.DTO.LoginRequest;
-import NM.SpringBoot.BlogApp.DTO.UserDto;
-import NM.SpringBoot.BlogApp.Service.UserService;
+import NM.SpringBoot.BlogApp.Domain.DTO.UserDto;
+import NM.SpringBoot.BlogApp.API.Request.LoginRequest;
+import NM.SpringBoot.BlogApp.API.Response.AuthResponse;
+import NM.SpringBoot.BlogApp.Domain.DAO.UserDao;
+import NM.SpringBoot.BlogApp.Domain.Service.UserService;
 import NM.SpringBoot.BlogApp.Utils.JWT;
 
 @RestController

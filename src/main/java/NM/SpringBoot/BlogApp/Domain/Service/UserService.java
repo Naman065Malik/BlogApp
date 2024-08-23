@@ -1,9 +1,9 @@
-package NM.SpringBoot.BlogApp.Service;
+package NM.SpringBoot.BlogApp.Domain.Service;
 
 import java.util.List;
 
-import NM.SpringBoot.BlogApp.DAO.UserDao;
-import NM.SpringBoot.BlogApp.DTO.UserDto;
+import NM.SpringBoot.BlogApp.Domain.DTO.UserDto;
+import NM.SpringBoot.BlogApp.Domain.DAO.UserDao;
 
 public interface UserService {
     public List<UserDao> getAllUsers();

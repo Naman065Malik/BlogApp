@@ -1,4 +1,4 @@
-package NM.SpringBoot.BlogApp.Service;
+package NM.SpringBoot.BlogApp.Domain.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,10 +12,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import NM.SpringBoot.BlogApp.DAO.UserDao;
-import NM.SpringBoot.BlogApp.DTO.UserDto;
-import NM.SpringBoot.BlogApp.Exception.ResourceNotFound;
-import NM.SpringBoot.BlogApp.Repository.UserRepo;
+import NM.SpringBoot.BlogApp.Domain.DTO.UserDto;
+import NM.SpringBoot.BlogApp.API.Exception.ResourceNotFound;
+import NM.SpringBoot.BlogApp.Domain.DAO.UserDao;
+import NM.SpringBoot.BlogApp.Domain.Repository.UserRepo;
 
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {

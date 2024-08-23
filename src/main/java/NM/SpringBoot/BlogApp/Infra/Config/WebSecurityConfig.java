@@ -1,4 +1,4 @@
-package NM.SpringBoot.BlogApp.Config;
+package NM.SpringBoot.BlogApp.Infra.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +19,7 @@ public class WebSecurityConfig{
                 .requestMatchers("/api/**").authenticated()
                 .anyRequest().permitAll()
             )
-            .formLogin(Customizer.withDefaults())
+            .httpBasic(Customizer.withDefaults())
             .logout(Customizer.withDefaults())
             .csrf((csrf) -> csrf.disable())
             .headers((header) -> header.frameOptions(Customizer.withDefaults()).disable());

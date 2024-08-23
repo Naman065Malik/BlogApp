@@ -1,4 +1,4 @@
-package NM.SpringBoot.BlogApp.DAO;
+package NM.SpringBoot.BlogApp.Domain.DAO;
 
 import java.util.UUID;
 

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import NM.SpringBoot.BlogApp.Domain.DTO.UserDto;
+import NM.SpringBoot.BlogApp.API.Exception.InvalidPassword;
 import NM.SpringBoot.BlogApp.API.Request.LoginRequest;
 import NM.SpringBoot.BlogApp.API.Response.AuthResponse;
 import NM.SpringBoot.BlogApp.Domain.DAO.UserDao;
@@ -32,7 +33,7 @@ public class AuthController {
     public AuthResponse login(@RequestBody LoginRequest request) {
         UserDao user = userService.getUserByUsername(request.getUsername());
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            throw new RuntimeException("Invalid Password");
+            throw new InvalidPassword("Invalid Password for User: " + user.getUsername());
         }
         AuthResponse authResponse = new AuthResponse();
         authResponse.setAccessToken(jwt.generateToken(user.getUsername(), 100000));

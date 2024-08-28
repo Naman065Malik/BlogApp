@@ -1,6 +1,7 @@
 package NM.SpringBoot.BlogApp.API.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,12 +23,15 @@ public class AuthController {
     private UserService userService;
 
     @Autowired
+    PasswordEncoder passwordEncoder;
+
+    @Autowired
     private JWT jwt;
 
     @PostMapping("/login")
     public AuthResponse login(@RequestBody LoginRequest request) {
         UserDao user = userService.getUserByUsername(request.getUsername());
-        if (!user.getPassword().equals(request.getPassword())) {
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new RuntimeException("Invalid Password");
         }
         AuthResponse authResponse = new AuthResponse();
@@ -40,6 +44,8 @@ public class AuthController {
 
     @PostMapping("/register")
     public AuthResponse register(@RequestBody @Validated UserDto userDto) {
+        // Encoding Password Before Creating User
+        userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
         UserDao userDao = userService.createUser(userDto);
         AuthResponse authResponse = new AuthResponse();
         authResponse.setAccessToken(jwt.generateToken(userDao.getUsername(), 100000));

@@ -31,8 +31,8 @@ public class AuthController {
             throw new RuntimeException("Invalid Password");
         }
         AuthResponse authResponse = new AuthResponse();
-        authResponse.setAccessToken(jwt.generateToken(request.getUsername(), 100000));
-        authResponse.setRefreshToken(jwt.generateToken(request.getUsername(), 10000000));
+        authResponse.setAccessToken(jwt.generateToken(user.getUsername(), 100000));
+        authResponse.setRefreshToken(jwt.generateToken(user.getUsername(), 10000000));
         authResponse.setUsername(user.getUsername());
         authResponse.setSuccess(true);
         return authResponse;

@@ -1,6 +1,9 @@
 package NM.SpringBoot.BlogApp.Domain.DAO;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,10 +38,18 @@ public class CommentDoa {
 
     @ManyToOne(fetch = FetchType.EAGER,optional = false)
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference
     private UserDao user;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "blog_id", nullable = false)
+    @JsonBackReference
     private BlogDoa blog;
+
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
 
 }

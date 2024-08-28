@@ -1,5 +1,7 @@
 package NM.SpringBoot.BlogApp.API.Response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +13,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AuthResponse {
     
     private String AccessToken;

@@ -36,8 +36,10 @@ public class AuthController {
             throw new InvalidPassword("Invalid Password for User: " + user.getUsername());
         }
         AuthResponse authResponse = new AuthResponse();
-        authResponse.setAccessToken(jwt.generateToken(user.getUsername(), 100000));
-        authResponse.setRefreshToken(jwt.generateToken(user.getUsername(), 10000000));
+        // 1 Hour Access Token
+        authResponse.setAccessToken(jwt.generateToken(user.getUsername(), 3600000 ));
+        // 15 Days Refresh Token
+        authResponse.setRefreshToken(jwt.generateToken(user.getUsername(), 1296000000));
         authResponse.setUsername(user.getUsername());
         authResponse.setSuccess(true);
         return authResponse;
@@ -49,8 +51,10 @@ public class AuthController {
         userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
         UserDao userDao = userService.createUser(userDto);
         AuthResponse authResponse = new AuthResponse();
-        authResponse.setAccessToken(jwt.generateToken(userDao.getUsername(), 100000));
-        authResponse.setRefreshToken(jwt.generateToken(userDao.getUsername(), 10000000));
+        // 1 Hour Access Token
+        authResponse.setAccessToken(jwt.generateToken(userDao.getUsername(), 3600000 ));
+        // 15 Days Refresh Token
+        authResponse.setRefreshToken(jwt.generateToken(userDao.getUsername(), 1296000000));
         authResponse.setUsername(userDao.getUsername());
         authResponse.setSuccess(true);
         return authResponse;
@@ -60,8 +64,8 @@ public class AuthController {
     public AuthResponse refresh(@RequestBody String refreshToken) {
         String username = jwt.getUsername(refreshToken);
         AuthResponse authResponse = new AuthResponse();
-        authResponse.setAccessToken(jwt.generateToken(username, 100000));
-        authResponse.setRefreshToken(jwt.generateToken(username, 10000000));
+        // 1 Hour Access Token
+        authResponse.setAccessToken(jwt.generateToken(username, 3600000 ));
         authResponse.setUsername(username);
         authResponse.setSuccess(true);
         return authResponse;

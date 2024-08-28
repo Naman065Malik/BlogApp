@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -48,8 +51,10 @@ public class BlogDoa {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference
     private UserDao host;
 
     @OneToMany(mappedBy = "blog", fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<CommentDoa> comments;
 }
